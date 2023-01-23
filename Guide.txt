@@ -1,0 +1,160 @@
+////*****////
+url for swagger
+http://localhost:3333/api-docs/#/
+
+/////*****/////
+
+
+sign up{
+    type=post
+    url="http://localhost:3333/signup"
+    values in body={
+              
+                 "username":"3",
+                 "email":"3.com",
+                 "password":"3"
+               
+           }
+    headers=null
+    respond={
+        "message": "User created successfully",
+         "data": {
+             "username": "3",
+             "email": "3.com",
+             "_id": "63ce19cb528501c50e4b0899",
+              "__v": 0
+                 }
+            }       
+        }
+
+add profile pic  {
+    type=post
+    url=http://localhost:3333/avatar
+    values in body{
+        name of the pic 
+        amd image name should be Image(representing taking file)
+    }
+    headers={
+        by:3(username its uniq for every user)
+    }
+    respond={
+        successfully created
+    }
+}     
+
+login{
+    type=post
+    url=http://localhost:3333/login
+    values in body={
+  "username":"3",
+  "password":"3"
+}
+headers=null 
+response=you will get a token for ur future authentication
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjMiLCJpYXQiOjE2NzQ0NTE0NTB9.7SXjGaDzEtDfvxMEIL1gtaZdRTUkDxfeUj1jmHROrFA"
+}
+
+    
+}
+
+createpost{
+    type=post
+    url=http://localhost:3333/createpost
+    values in body={
+        name:name of the post
+        description: description of the post
+        Image:choose file
+    }
+    headers={
+        authentication=token
+    }
+    response{
+        post:object
+    }
+      
+}
+
+all post{
+    type=get
+    url=http://localhost:3333/allposts
+    headers{
+        authentication:token
+    }
+    response=all posts
+}
+
+like a post{
+    type=post
+    url=http://localhost:3333/likepost
+    value in body{
+        username:
+        postid:
+    }
+    headers=token
+    response{
+         "message": "Post liked",
+         likedpost:object
+    }
+}
+
+comment{
+    type=post
+    url=http://localhost:3333/commentpost
+    value in body{
+        postid:
+        comment:
+    }
+    headers=token
+    response{
+        "message": "Post commented",
+  "commentPost"::object
+
+    }
+}
+
+mypost{
+    type=get
+    url=http://localhost:3333/mypost
+    values in body=null
+    headers=token
+    response{
+        mypost[]
+    }
+}
+
+editpost{
+    type=post
+    url=http://localhost:3333/editpost
+    values in body{
+        postid:
+        description
+    }
+    heades=token
+    response{
+        successfull
+    }
+}
+
+signout{
+    type=get
+    url=http://localhost:3333/signout
+    values in body=null 
+    headers=token
+    response{
+        signed out successfully
+    }
+}
+
+
+delete post{
+    type=post
+    url=http://localhost:3333/deletepost
+    values in body{
+        postid:
+    }
+    headers=token
+    response{
+        deleted the post
+    }
+}
