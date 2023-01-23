@@ -109,7 +109,7 @@ module.exports = {
       const allPosts = await Post.find();
 
       return res.status(200).send({
-        message: "All posts",
+        message: "All posts.",
         data: allPosts,
       });
     } catch (err) {
